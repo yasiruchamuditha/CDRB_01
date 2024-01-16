@@ -39,5 +39,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white" />
 
-
 </androidx.constraintlayout.motion.widget.MotionLayout>

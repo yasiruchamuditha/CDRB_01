@@ -1,13 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_Page">
-    <TextView
+    tools:context=".Login_Page"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/login">
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="LoginPage"/>
+        android:orientation="vertical"
+        android:layout_below="@+id/background01"
+        android:padding="20dp"
+        android:layout_marginTop="50dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/lblHeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="LOG IN"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="100dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NIC"
+            android:id="@+id/lblNIC"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/E_NIC" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:id="@+id/lblPassword"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/E_Password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LProgressBar"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/btnLogin"
+            android:layout_marginTop="45dp"
+            android:textSize="20sp"
+            android:text="CONTINUE"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/RegisterNow"
+            android:text="Click to Register"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
