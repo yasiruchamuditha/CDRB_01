@@ -32,8 +32,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NIC"
-            android:id="@+id/lblNIC"
+            android:text="Email"
+            android:id="@+id/lblEmail"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_gravity="left"
@@ -46,7 +46,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/E_NIC" />
+                android:id="@+id/EEmail" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -68,7 +68,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/E_Password" />
+                android:id="@+id/EPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
