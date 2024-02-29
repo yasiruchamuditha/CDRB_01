@@ -40,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         TextView babyNameTextView;
         TextView vaccinationDateTextView;
 
-        TextView imeditateHealth;
+        TextView immediateHealth;
         TextView babyGender;
         TextView babyId;
         TextView babyMonth;
@@ -52,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             super(itemView);
             babyNameTextView = itemView.findViewById(R.id.baby_name_text_view);
             vaccinationDateTextView = itemView.findViewById(R.id.vaccination_date_text_view);
-            imeditateHealth=itemView.findViewById(R.id.immediateHealth_text_view);
+            immediateHealth=itemView.findViewById(R.id.immediateHealth_text_view);
             babyGender=itemView.findViewById(R.id.babyGender_text_view);
             babyId=itemView.findViewById(R.id.babyId_text_view);
             babyMonth=itemView.findViewById(R.id.babyMonths_text_view);
@@ -63,13 +63,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         public void bind(VaccinationRecord record) {
             babyNameTextView.setText(record.getBabyName());
             vaccinationDateTextView.setText(record.getVaccinationDate());
-            imeditateHealth.setText(record.getImmediateHealth());
-            babyGender.setText(record.getBabyId());
+            immediateHealth.setText(record.getImmediateHealth());
+            babyGender.setText(record.getGender());
             babyId.setText(record.getBabyId());
             babyMonth.setText(record.getBabyMonths());
             vaccinationName.setText(record.getVaccineName());
 
             // Bind other data as needed
         }
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.cdrb_01;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,9 +43,19 @@ public class TableActivity1 extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dataList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    VaccinationRecord record = snapshot.getValue(VaccinationRecord.class);
-                    dataList.add(record);
+                for (DataSnapshot babySnapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot monthSnapshot : babySnapshot.getChildren()) {
+                        String babyId = babySnapshot.getKey();
+                        String babyMonths = monthSnapshot.getKey();
+                        String babyName = (String) monthSnapshot.child("Baby_name").getValue();
+                        String gender = (String) monthSnapshot.child("Gender").getValue();
+                        String vaccinationDate = (String) monthSnapshot.child("Vaccination_date").getValue();
+                        String vaccineName = (String) monthSnapshot.child("Vaccine_name").getValue();
+                        String immediateHealth = (String) monthSnapshot.child("immediateHealth").getValue();
+
+                        VaccinationRecord record = new VaccinationRecord(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
+                        dataList.add(record);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
