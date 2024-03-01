@@ -1,48 +1,42 @@
 package com.example.cdrb_01;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cdrb_01.classes.MyAdapter;
-import com.example.cdrb_01.classes.VaccinationRecord;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
 public class TableActivity1 extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private MyAdapter adapter;
-    private ArrayList<VaccinationRecord> dataList;
-
+    private TableLayout tableLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table1);
 
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        dataList = new ArrayList<>();
-        adapter = new MyAdapter(dataList);
-        recyclerView.setAdapter(adapter);
+        tableLayout = findViewById(R.id.table_layout);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Vaccinations");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                dataList.clear();
+                tableLayout.removeAllViews(); // Clear existing rows
+
+                // Add column headers
+                addHeaders();
+
+                // Populate the table with data
                 for (DataSnapshot babySnapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot monthSnapshot : babySnapshot.getChildren()) {
                         String babyId = babySnapshot.getKey();
@@ -53,11 +47,10 @@ public class TableActivity1 extends AppCompatActivity {
                         String vaccineName = (String) monthSnapshot.child("Vaccine_name").getValue();
                         String immediateHealth = (String) monthSnapshot.child("immediateHealth").getValue();
 
-                        VaccinationRecord record = new VaccinationRecord(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
-                        dataList.add(record);
+                        // Add a row for each record
+                        addRow(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
                     }
                 }
-                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -65,5 +58,45 @@ public class TableActivity1 extends AppCompatActivity {
                 Toast.makeText(TableActivity1.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Helper method to add column headers
+    private void addHeaders() {
+        TableRow row = new TableRow(this);
+        row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+        String[] headers = {"Baby ID", "Baby Months", "Baby Name", "Gender", "Vaccination Date", "Vaccine Name", "Immediate Health"};
+
+        for (String header : headers) {
+            TextView textView = new TextView(this);
+            textView.setText(header);
+            textView.setGravity(Gravity.CENTER);
+            textView.setPadding(8, 8, 8, 8);
+            textView.setTextSize(16);
+            //textView.setBackgroundResource(R.drawable.cell_shape);
+            row.addView(textView);
+        }
+
+        tableLayout.addView(row);
+    }
+
+    // Helper method to add a row to the table
+    private void addRow(String babyId, String babyMonths, String babyName, String gender, String vaccinationDate, String vaccineName, String immediateHealth) {
+        TableRow row = new TableRow(this);
+        row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+        String[] data = {babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth};
+
+        for (String datum : data) {
+            TextView textView = new TextView(this);
+            textView.setText(datum);
+            textView.setGravity(Gravity.CENTER);
+            textView.setPadding(8, 8, 8, 8);
+            textView.setTextSize(14);
+          //  textView.setBackgroundResource(R.drawable.cell_shape);
+            row.addView(textView);
+        }
+
+        tableLayout.addView(row);
     }
 }
