@@ -1,6 +1,8 @@
 package com.example.cdrb_01;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,15 +21,28 @@ import com.google.firebase.database.ValueEventListener;
 public class TableActivity1 extends AppCompatActivity {
 
     private TableLayout tableLayout;
+    private String receivedValue;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table1);
+        textView = findViewById(R.id.received); // Replace with your actual TextView ID
+
+        // Retrieve the value from the Intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            receivedValue = intent.getStringExtra("INPUT_VALUE");
+
+            // Display the received value in a TextView or use it as needed
+            textView.setText("Received Value: " + receivedValue);
+        }
 
         tableLayout = findViewById(R.id.table_layout);
+        // Assuming "Main" is the root of your database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Main").child(receivedValue).child("Vaccinations");
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Vaccinations");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,6 +70,7 @@ public class TableActivity1 extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("TableActivity1", "Failed to fetch data", databaseError.toException());
                 Toast.makeText(TableActivity1.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
         });
@@ -93,7 +109,7 @@ public class TableActivity1 extends AppCompatActivity {
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(8, 8, 8, 8);
             textView.setTextSize(14);
-          //  textView.setBackgroundResource(R.drawable.cell_shape);
+            //textView.setBackgroundResource(R.drawable.cell_shape);
             row.addView(textView);
         }
 
