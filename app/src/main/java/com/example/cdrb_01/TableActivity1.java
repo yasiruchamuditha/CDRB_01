@@ -22,13 +22,14 @@ public class TableActivity1 extends AppCompatActivity {
 
     private TableLayout tableLayout;
     private String receivedValue;
-    TextView textView;
+    private String month= "5";
+    //TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table1);
-        textView = findViewById(R.id.received); // Replace with your actual TextView ID
+        //textView = findViewById(R.id.received); // Replace with your actual TextView ID
 
         // Retrieve the value from the Intent
         Intent intent = getIntent();
@@ -36,12 +37,12 @@ public class TableActivity1 extends AppCompatActivity {
             receivedValue = intent.getStringExtra("INPUT_VALUE");
 
             // Display the received value in a TextView or use it as needed
-            textView.setText("Received Value: " + receivedValue);
+            //textView.setText("Received Value: " + receivedValue);
         }
 
         tableLayout = findViewById(R.id.table_layout);
         // Assuming "Main" is the root of your database
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Main").child(receivedValue).child("Vaccinations");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
