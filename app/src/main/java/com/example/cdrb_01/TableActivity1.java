@@ -22,29 +22,23 @@ public class TableActivity1 extends AppCompatActivity {
 
     private TableLayout tableLayout;
     private String receivedValue;
-    private String month= "5";
-    //TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table1);
-        //textView = findViewById(R.id.received); // Replace with your actual TextView ID
 
-        // Retrieve the value from the Intent
         Intent intent = getIntent();
         if (intent != null) {
             receivedValue = intent.getStringExtra("INPUT_VALUE");
-
-            // Display the received value in a TextView or use it as needed
-            //textView.setText("Received Value: " + receivedValue);
         }
 
         tableLayout = findViewById(R.id.table_layout);
-        // Assuming "Main" is the root of your database
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        // Assuming receivedValue is the baby_id
+        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");
+
+        babyReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tableLayout.removeAllViews(); // Clear existing rows
@@ -52,20 +46,18 @@ public class TableActivity1 extends AppCompatActivity {
                 // Add column headers
                 addHeaders();
 
-                // Populate the table with data
-                for (DataSnapshot babySnapshot : dataSnapshot.getChildren()) {
-                    for (DataSnapshot monthSnapshot : babySnapshot.getChildren()) {
-                        String babyId = babySnapshot.getKey();
-                        String babyMonths = monthSnapshot.getKey();
-                        String babyName = (String) monthSnapshot.child("Baby_name").getValue();
-                        String gender = (String) monthSnapshot.child("Gender").getValue();
-                        String vaccinationDate = (String) monthSnapshot.child("Vaccination_date").getValue();
-                        String vaccineName = (String) monthSnapshot.child("Vaccine_name").getValue();
-                        String immediateHealth = (String) monthSnapshot.child("immediateHealth").getValue();
+                // Iterate through children to find vaccination details
+                for (DataSnapshot vaccinationSnapshot : dataSnapshot.getChildren()) {
+                    String babyId = (String) vaccinationSnapshot.child("Baby_id").getValue();
+                    String babyMonths = (String) vaccinationSnapshot.child("Baby_months").getValue();
+                    String babyName = (String) vaccinationSnapshot.child("Baby_name").getValue();
+                    String gender = (String) vaccinationSnapshot.child("Gender").getValue();
+                    String vaccinationDate = (String) vaccinationSnapshot.child("Vaccination_date").getValue();
+                    String vaccineName = (String) vaccinationSnapshot.child("Vaccine_name").getValue();
+                    String immediateHealth = (String) vaccinationSnapshot.child("immediateHealth").getValue();
 
-                        // Add a row for each record
-                        addRow(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
-                    }
+                    // Add a row for each vaccination record
+                    addRow(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
                 }
             }
 
@@ -90,7 +82,6 @@ public class TableActivity1 extends AppCompatActivity {
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(8, 8, 8, 8);
             textView.setTextSize(16);
-            //textView.setBackgroundResource(R.drawable.cell_shape);
             row.addView(textView);
         }
 
@@ -110,7 +101,6 @@ public class TableActivity1 extends AppCompatActivity {
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(8, 8, 8, 8);
             textView.setTextSize(14);
-            //textView.setBackgroundResource(R.drawable.cell_shape);
             row.addView(textView);
         }
 
