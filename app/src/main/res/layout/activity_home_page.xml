@@ -26,7 +26,7 @@
                 android:layout_height="57dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="16dp"
-                android:text="Bookshelf"
+                android:text="MOH"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toStartOf="@+id/amazonImage"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="4dp"
-                android:text="Books Library"
+                android:text="Ministry Oh Health"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/amazonImage"
@@ -70,7 +70,7 @@
                 app:layout_constraintTop_toBottomOf="@id/amazonImage">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/mathsCard"
+                    android:id="@+id/VaccinationCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -83,13 +83,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/MathsBookCus"
+                            android:id="@+id/TvVaccination"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/clothingImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Maths Books"
+                            android:text="Vaccination Details"
                             android:textColor="@color/lavender"
                             android:textSize="20sp" />
 
@@ -105,7 +105,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/scienceCard"
+                    android:id="@+id/ClinicCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -118,13 +118,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/elecName"
+                            android:id="@+id/TvClinicName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/elecImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Science books"
+                            android:text="Clinic Details"
                             android:textColor="@color/lavender"
                             android:textSize="20sp" />
 
@@ -153,7 +153,7 @@
                 app:layout_constraintTop_toBottomOf="@id/row1">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/historyCard"
+                    android:id="@+id/TriposhaCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -166,13 +166,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/homeName"
+                            android:id="@+id/TvTriposha"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/homeImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="History Books"
+                            android:text="Triposha Details"
                             android:textColor="@color/lavender"
                             android:textSize="20sp" />
 
@@ -188,7 +188,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/techCard"
+                    android:id="@+id/DentalCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -201,13 +201,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/beautyName"
+                            android:id="@+id/TvDental"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/beautyImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Technical Books"
+                            android:text="Dental Details"
                             android:textColor="@color/lavender"
                             android:textSize="20sp" />
 
@@ -237,7 +237,7 @@
                 app:layout_constraintTop_toBottomOf="@id/row2">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/storyCard"
+                    android:id="@+id/LaboratoryCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -250,13 +250,13 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/pharmName"
+                            android:id="@+id/TvLaboratory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/pharmImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Story Books"
+                            android:text="Laboratory Details"
                             android:textColor="@color/lavender"
                             android:textSize="20sp" />
 
@@ -272,7 +272,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/languageCard"
+                    android:id="@+id/EyeCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -291,7 +291,7 @@
                             android:layout_below="@+id/grocImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Languages"
+                            android:text="Eye Ear Clinic"
                             android:textColor="@color/lavender"
                             android:textSize="20sp" />
 
@@ -317,39 +317,38 @@
         android:layout_height="match_parent">
         <!-- Other layout elements or fragments go here -->
         <!-- Bottom Navigation Bar -->
-
     </FrameLayout>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="50dp"
-        app:layout_anchor="@+id/scrollView2"
-        app:layout_anchorGravity="bottom|center"
-        tools:ignore="BottomAppBar">
+<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--        android:id="@+id/bottomAppBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="64dp"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:background="@color/white"-->
+<!--        app:fabCradleMargin="10dp"-->
+<!--        app:fabCradleRoundedCornerRadius="50dp"-->
+<!--        app:layout_anchor="@+id/scrollView2"-->
+<!--        app:layout_anchorGravity="bottom|center"-->
+<!--        tools:ignore="BottomAppBar">-->
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            app:labelVisibilityMode="labeled" />
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/bottomNavigationView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:labelVisibilityMode="labeled" />-->
 
 
-    </com.google.android.material.bottomappbar.BottomAppBar>
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:backgroundTint="@color/white"-->
-    <!--        android:src="@drawable/baseline_add_24"-->
-    <!--        app:layout_anchor="@id/bottomAppBar"-->
-    <!--        app:maxImageSize="40dp"-->
-    <!--        app:tint="@color/lavender" />-->
+<!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
+<!--    &lt;!&ndash;    <com.google.android.material.floatingactionbutton.FloatingActionButton&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:backgroundTint="@color/white"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:src="@drawable/baseline_add_24"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_anchor="@id/bottomAppBar"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:maxImageSize="40dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:tint="@color/lavender" />&ndash;&gt;-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

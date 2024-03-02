@@ -1,17 +1,17 @@
 package com.example.cdrb_01;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class BabyID extends AppCompatActivity {
+public class Baby_Id extends AppCompatActivity {
 
-    EditText editText;
-    Button button;
+    private EditText editText;
+    private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +27,13 @@ public class BabyID extends AppCompatActivity {
                 String inputValue = editText.getText().toString();
 
                 // Create an Intent to start the second activity
-                Intent intent = new Intent(BabyID.this, TableActivity1.class);
+                Intent babyIntent = new Intent(Baby_Id.this, Home_Page.class);
 
                 // Pass the value to the second activity using Intent extra
-                intent.putExtra("INPUT_VALUE", inputValue);
+                babyIntent.putExtra("INPUT_VALUE", inputValue);
 
                 // Start the second activity
-                startActivity(intent);
+                startActivity(babyIntent);
             }
         });
     }
