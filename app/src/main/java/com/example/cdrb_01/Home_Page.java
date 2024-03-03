@@ -5,10 +5,12 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class Home_Page extends AppCompatActivity {
 
     private CardView vaccinationCard, clinicCard, triposhaCard, dentalCard, laboratoryCard, eyeCard;
+    private Button profileView;
     private String receivedValue;
 
     @Override
@@ -21,13 +23,21 @@ public class Home_Page extends AppCompatActivity {
         if (babyIntent != null && babyIntent.hasExtra("INPUT_VALUE")) {
             receivedValue = babyIntent.getStringExtra("INPUT_VALUE");
         }
-
+        profileView=findViewById(R.id.profileDetails);
         vaccinationCard = findViewById(R.id.VaccinationCard);
         clinicCard = findViewById(R.id.ClinicCard);
         triposhaCard = findViewById(R.id.TriposhaCard);
         dentalCard = findViewById(R.id.DentalCard);
         laboratoryCard = findViewById(R.id.LaboratoryCard);
         eyeCard = findViewById(R.id.EyeCard);
+
+
+        profileView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNextActivity(Medical_info.class, "INPUT_VALUE_ProfileView");
+            }
+        });
 
         vaccinationCard.setOnClickListener(new View.OnClickListener() {
             @Override

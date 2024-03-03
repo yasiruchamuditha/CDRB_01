@@ -40,7 +40,7 @@ public class Eye_Card extends AppCompatActivity {
         //textView.setText("Eye Card : " + receivedValue);
         tableLayout = findViewById(R.id.table_layout);
         // Assuming receivedValue is the baby_id
-        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");
+        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("EyeAndEar");
 
         babyReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -51,17 +51,19 @@ public class Eye_Card extends AppCompatActivity {
                 addHeaders();
 
                 // Iterate through children to find vaccination details
-                for (DataSnapshot vaccinationSnapshot : dataSnapshot.getChildren()) {
-                    String babyId = (String) vaccinationSnapshot.child("Baby_id").getValue();
-                    String babyMonths = (String) vaccinationSnapshot.child("Baby_months").getValue();
-                    String babyName = (String) vaccinationSnapshot.child("Baby_name").getValue();
-                    String gender = (String) vaccinationSnapshot.child("Gender").getValue();
-                    String vaccinationDate = (String) vaccinationSnapshot.child("Vaccination_date").getValue();
-                    String vaccineName = (String) vaccinationSnapshot.child("Vaccine_name").getValue();
-                    String immediateHealth = (String) vaccinationSnapshot.child("immediateHealth").getValue();
+                for (DataSnapshot earAndEyeSnapShot : dataSnapshot.getChildren()) {
+                    String babyId = (String) earAndEyeSnapShot.child("Bid").getValue();
+                    String doctorName = (String) earAndEyeSnapShot.child("Dname").getValue();
+                    String etName = (String) earAndEyeSnapShot.child("ETName").getValue();
+                    String eTresult = (String) earAndEyeSnapShot.child("ETresult").getValue();
+                    String earTName = (String) earAndEyeSnapShot.child("EarTName").getValue();
+                    String earTresult = (String) earAndEyeSnapShot.child("EarTresult").getValue();
+                    String tdate = (String) earAndEyeSnapShot.child("Tdate").getValue();
+                    String months = (String)earAndEyeSnapShot.child("months").getValue();
+                    String note=(String)earAndEyeSnapShot.child("specialN").getValue();
 
                     // Add a row for each vaccination record
-                    addRow(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
+                    addRow(babyId, doctorName, etName, eTresult, earTName, earTresult, tdate,months,note);
                 }
             }
 
@@ -78,7 +80,7 @@ public class Eye_Card extends AppCompatActivity {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] headers = {"Baby ID", "Baby Months", "Baby Name", "Gender", "Vaccination Date", "Vaccine Name", "Immediate Health"};
+        String[] headers = {"Baby ID", "Doctor Name", "Eye Test Name", "Eye Test Result", "Ear Test Name", "Ear Test Result", "Test Date","Months","Special Note"};
 
         for (String header : headers) {
             TextView textView = new TextView(this);
@@ -93,11 +95,11 @@ public class Eye_Card extends AppCompatActivity {
     }
 
     // Helper method to add a row to the table
-    private void addRow(String babyId, String babyMonths, String babyName, String gender, String vaccinationDate, String vaccineName, String immediateHealth) {
+    private void addRow(String babyId,String doctorName,String etName,String eTresult,String earTName,String earTresult,String tdate,String months,String note) {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] data = {babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth};
+        String[] data = {babyId, doctorName, etName, eTresult, earTName, earTresult, tdate,months,note};
 
         for (String datum : data) {
             TextView textView = new TextView(this);
