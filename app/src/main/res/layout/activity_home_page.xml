@@ -66,9 +66,9 @@
 
                 <Button
                     android:id="@+id/profileDetails"
-                    android:layout_width="206dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="100dp"
+                    android:layout_width="220dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="95dp"
                     android:shadowColor="@color/white"
                     android:text="View Profile"
                     android:layout_marginTop="130dp"
