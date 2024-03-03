@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Medical_info extends AppCompatActivity {
 
     private String receivedValue;
+    private Button back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,17 @@ public class Medical_info extends AppCompatActivity {
         if (intentVaccination != null && intentVaccination.hasExtra("INPUT_VALUE_ProfileView")) {
             receivedValue = intentVaccination.getStringExtra("INPUT_VALUE_ProfileView");
         }
+
+        back_button = findViewById(R.id.back_button);
+
+        // Add OnClickListener to the back_button
+        back_button.setOnClickListener(view -> {
+            // Create an Intent to navigate back to the home page
+            Intent MedicalbackIntent = new Intent(Medical_info.this, Home_Page.class);
+            startActivity(MedicalbackIntent);
+            finish(); // Finish
+        });
+
 
         // Initialize TextViews for medical information
         TextView textName = findViewById(R.id.text_name);
@@ -73,5 +86,7 @@ public class Medical_info extends AppCompatActivity {
                 Toast.makeText(Medical_info.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 }

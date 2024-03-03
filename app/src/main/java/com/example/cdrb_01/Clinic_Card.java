@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class Clinic_Card extends AppCompatActivity {
 
     private TableLayout tableLayout;
     private String receivedValue;
+    private Button back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +35,20 @@ public class Clinic_Card extends AppCompatActivity {
         }
 
         tableLayout = findViewById(R.id.table_layout);
+        back_button = findViewById(R.id.back_button);
 
-        DatabaseReference clinicReference = FirebaseDatabase.getInstance().getReference().child("Clinic");
+        // Add OnClickListener to the back_button
+        back_button.setOnClickListener(view -> {
+            // Create an Intent to navigate back to the home page
+            Intent ClinicBackIntent = new Intent(Clinic_Card.this, Home_Page.class);
+            startActivity(ClinicBackIntent);
+            finish(); // Finish
+        });
 
-        clinicReference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("EyeAndEar");
+
+        babyReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tableLayout.removeAllViews(); // Clear existing rows
@@ -44,20 +56,23 @@ public class Clinic_Card extends AppCompatActivity {
                 // Add column headers
                 addHeaders();
 
-                // Retrieve clinic details
-                String clinicName = dataSnapshot.child("Clinic_name").getValue(String.class);
-                String clinicTime = dataSnapshot.child("Clinic_time").getValue(String.class);
-                String doctorName = dataSnapshot.child("Doctor_name").getValue(String.class);
-                String specialNote = dataSnapshot.child("Special_note").getValue(String.class);
+                // Iterate through children to find vaccination details
+                for (DataSnapshot earAndEyeSnapShot : dataSnapshot.getChildren()) {
+                    String babyId = (String) earAndEyeSnapShot.child("Bid").getValue();
+                    String etName = (String) earAndEyeSnapShot.child("ETName").getValue();
+                    String tdate = (String) earAndEyeSnapShot.child("Tdate").getValue();
+                    String months = (String)earAndEyeSnapShot.child("months").getValue();
+                    String note=(String)earAndEyeSnapShot.child("specialN").getValue();
 
-                // Add a row for clinic details
-                addRow(clinicName, clinicTime, doctorName, specialNote);
+                    // Add a row for each vaccination record
+                    addRow(babyId, etName,tdate,months,note);
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("Clinic_Card", "Failed to fetch clinic data", databaseError.toException());
-                Toast.makeText(Clinic_Card.this, "Failed to fetch clinic data", Toast.LENGTH_SHORT).show();
+                Log.e("TableActivity1", "Failed to fetch data", databaseError.toException());
+                Toast.makeText(Clinic_Card.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -67,7 +82,7 @@ public class Clinic_Card extends AppCompatActivity {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] headers = {"Clinic Name", "Clinic Time", "Doctor Name", "Special Note"};
+        String[] headers = {"Baby ID", "Clinic Name","Date","Months","Note"};
 
         for (String header : headers) {
             TextView textView = new TextView(this);
@@ -75,7 +90,6 @@ public class Clinic_Card extends AppCompatActivity {
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(8, 8, 8, 8);
             textView.setTextSize(16);
-            textView.setTextColor(getResources().getColor(R.color.bg1)); // Set header text color here
             row.addView(textView);
         }
 
@@ -83,11 +97,11 @@ public class Clinic_Card extends AppCompatActivity {
     }
 
     // Helper method to add a row to the table
-    private void addRow(String clinicName, String clinicTime, String doctorName, String specialNote) {
+    private void addRow(String babyId,String etName,String tdate,String months,String note) {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] data = {clinicName, clinicTime, doctorName, specialNote};
+        String[] data = {babyId,etName, tdate,months,note};
 
         for (String datum : data) {
             TextView textView = new TextView(this);

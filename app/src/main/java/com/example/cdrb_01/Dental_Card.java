@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,11 +21,12 @@ import com.google.firebase.database.ValueEventListener;
 public class Dental_Card extends AppCompatActivity {
     private TableLayout tableLayout;
     private String receivedValue;
+    private Button back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clinic_card);
+        setContentView(R.layout.activity_dental_card);
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("INPUT_VALUE_Clinic")) {
@@ -32,6 +34,15 @@ public class Dental_Card extends AppCompatActivity {
         }
 
         tableLayout = findViewById(R.id.table_layout);
+        back_button = findViewById(R.id.back_button);
+
+        // Add OnClickListener to the back_button
+        back_button.setOnClickListener(view -> {
+            // Create an Intent to navigate back to the home page
+            Intent DentalbackIntent = new Intent(Dental_Card.this, Home_Page.class);
+            startActivity(DentalbackIntent);
+            finish(); // Finish
+        });
 
         DatabaseReference clinicReference = FirebaseDatabase.getInstance().getReference().child("Dental");
 

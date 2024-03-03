@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class TableActivity1 extends AppCompatActivity {
     private TableLayout tableLayout;
     private String receivedValue;
 
+    private Button back_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,16 @@ public class TableActivity1 extends AppCompatActivity {
         }
 
         tableLayout = findViewById(R.id.table_layout);
+
+        //back_button = findViewById(R.id.back_button);
+
+//        // Add OnClickListener to the back_button
+//        back_button.setOnClickListener(view -> {
+//            // Create an Intent to navigate back to the home page
+//            Intent backIntent = new Intent(Clinic_Card.this, Home_Page.class);
+//            startActivity(backIntent);
+//            finish(); // Finish
+//        });
 
         // Assuming receivedValue is the baby_id
         DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");

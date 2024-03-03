@@ -214,7 +214,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/DentalCard"
+                    android:id="@+id/EyeCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -227,19 +227,19 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/TvDental"
+                            android:id="@+id/grocName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/beautyImage"
+                            android:layout_below="@+id/grocImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Dental"
+                            android:text="Hear And Vision"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
-                            android:id="@+id/beautyImage"
+                            android:id="@+id/grocImage"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
@@ -301,7 +301,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/EyeCard"
+                    android:id="@+id/DentalCard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -314,19 +314,19 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/grocName"
+                            android:id="@+id/TvDental"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/grocImage"
+                            android:layout_below="@+id/beautyImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Hear And Vision"
+                            android:text="Logout"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
-                            android:id="@+id/grocImage"
+                            android:id="@+id/beautyImage"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
