@@ -63,7 +63,10 @@ public class Home_Page extends AppCompatActivity {
         dentalCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startNextActivity(Dental_Card.class, "INPUT_VALUE_Dental");
+                //startNextActivity(Dental_Card.class, "INPUT_VALUE_Dental");
+                Intent LogoutIntent = new Intent(Home_Page.this, Login_Page.class);
+                startActivity(LogoutIntent);
+                finish(); // Finish
             }
         });
 
