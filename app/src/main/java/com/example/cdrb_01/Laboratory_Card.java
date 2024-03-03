@@ -29,7 +29,7 @@ public class Laboratory_Card extends AppCompatActivity {
         setContentView(R.layout.activity_laboratory_card);
 
         // Initialize the TextView
-       //textView = findViewById(R.id.textView); // Replace with your actual TextView ID
+        //textView = findViewById(R.id.textView); // Replace with your actual TextView ID
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("INPUT_VALUE_Laboratory")) {
@@ -41,7 +41,7 @@ public class Laboratory_Card extends AppCompatActivity {
         tableLayout = findViewById(R.id.table_layout);
 
         // Assuming receivedValue is the baby_id
-        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");
+        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Laboratory");
 
         babyReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,17 +52,19 @@ public class Laboratory_Card extends AppCompatActivity {
                 addHeaders();
 
                 // Iterate through children to find vaccination details
-                for (DataSnapshot vaccinationSnapshot : dataSnapshot.getChildren()) {
-                    String babyId = (String) vaccinationSnapshot.child("Baby_id").getValue();
-                    String babyMonths = (String) vaccinationSnapshot.child("Baby_months").getValue();
-                    String babyName = (String) vaccinationSnapshot.child("Baby_name").getValue();
-                    String gender = (String) vaccinationSnapshot.child("Gender").getValue();
-                    String vaccinationDate = (String) vaccinationSnapshot.child("Vaccination_date").getValue();
-                    String vaccineName = (String) vaccinationSnapshot.child("Vaccine_name").getValue();
-                    String immediateHealth = (String) vaccinationSnapshot.child("immediateHealth").getValue();
+                for (DataSnapshot laboratorySnapShot : dataSnapshot.getChildren()) {
+                    String babyId = (String) laboratorySnapShot.child("Baby_id").getValue();
+                    String babyName = (String) laboratorySnapShot.child("Baby_name").getValue();
+                    String contactNumber = (String) laboratorySnapShot.child("Contact_number").getValue();
+                    String email = (String) laboratorySnapShot.child("Email").getValue();
+                    String parentName = (String) laboratorySnapShot.child("Parent_name").getValue();
+                    String specialName = (String) laboratorySnapShot.child("Special_note").getValue();
+                    String testDate = (String) laboratorySnapShot.child("Test_date").getValue();
+                    String testName=(String)laboratorySnapShot.child("Test_name").getValue();
+                    String testResult=(String)laboratorySnapShot.child("Test_result").getValue();
 
                     // Add a row for each vaccination record
-                    addRow(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
+                    addRow(babyId, babyName, contactNumber, email, parentName, specialName, testDate,testName,testResult);
                 }
             }
 
@@ -79,7 +81,7 @@ public class Laboratory_Card extends AppCompatActivity {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] headers = {"Baby ID", "Baby Months", "Baby Name", "Gender", "Vaccination Date", "Vaccine Name", "Immediate Health"};
+        String[] headers = {"Baby ID", "Baby Name", "Contact Number", "Email", "Parent Name", "Special Name", "Test Date","Test Name","Test Result"};
 
         for (String header : headers) {
             TextView textView = new TextView(this);
@@ -94,11 +96,11 @@ public class Laboratory_Card extends AppCompatActivity {
     }
 
     // Helper method to add a row to the table
-    private void addRow(String babyId, String babyMonths, String babyName, String gender, String vaccinationDate, String vaccineName, String immediateHealth) {
+    private void addRow(String babyId,String babyName,String contactNumber,String email,String parentName,String specialName,String testDate,String testName,String testResult) {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] data = {babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth};
+        String[] data = {babyId, babyName, contactNumber, email, parentName, specialName, testDate,testName,testResult};
 
         for (String datum : data) {
             TextView textView = new TextView(this);

@@ -26,9 +26,10 @@
                 android:layout_height="57dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="16dp"
-                android:text="MOH"
+                android:text="MINISRY OF HEALTH"
                 android:textColor="@color/white"
-                android:textSize="40sp"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/amazonImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,9 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="4dp"
-                android:text="Ministry Oh Health"
+                android:text="Health Development Book"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="17dp"
                 app:layout_constraintEnd_toStartOf="@+id/amazonImage"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,16 +53,37 @@
                 android:layout_width="106dp"
                 android:layout_height="117dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/bookshelf3"
+                android:src="@drawable/logo1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/amazonName"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
+
+                <Button
+                    android:id="@+id/profileDetails"
+                    android:layout_width="206dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="100dp"
+                    android:shadowColor="@color/white"
+                    android:text="View Profile"
+                    android:layout_marginTop="130dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="127dp">
+
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/row1"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="60dp"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,8 +111,9 @@
                             android:layout_below="@+id/clothingImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Vaccination Details"
-                            android:textColor="@color/lavender"
+                            android:text="Vaccination"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -103,6 +126,7 @@
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ClinicCard"
@@ -124,8 +148,9 @@
                             android:layout_below="@+id/elecImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Clinic Details"
-                            android:textColor="@color/lavender"
+                            android:text="Clinic"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -172,8 +197,9 @@
                             android:layout_below="@+id/homeImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Triposha Details"
-                            android:textColor="@color/lavender"
+                            android:text="Triposha"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -207,8 +233,9 @@
                             android:layout_below="@+id/beautyImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Dental Details"
-                            android:textColor="@color/lavender"
+                            android:text="Dental"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -256,8 +283,9 @@
                             android:layout_below="@+id/pharmImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Laboratory Details"
-                            android:textColor="@color/lavender"
+                            android:text="Laboratory"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -269,6 +297,7 @@
                             android:src="@drawable/bookshelf3" />
 
                     </RelativeLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -291,8 +320,9 @@
                             android:layout_below="@+id/grocImage"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Eye Ear Clinic"
-                            android:textColor="@color/lavender"
+                            android:text="Hear And Vision"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -306,20 +336,21 @@
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/scrollView2"
+        app:layout_anchorGravity="center">
         <!-- Other layout elements or fragments go here -->
         <!-- Bottom Navigation Bar -->
     </FrameLayout>
 
-<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+    <!--    <com.google.android.material.bottomappbar.BottomAppBar-->
 <!--        android:id="@+id/bottomAppBar"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="64dp"-->

@@ -4,21 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/bg1"
     tools:context=".Baby_Id">
+
+    <ImageView
+        android:id="@+id/amazonImage"
+        android:layout_width="335dp"
+        android:layout_height="267dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/baby2" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Text"/>
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="368dp"
+        android:background="@color/white"
+        android:hint="Enter Baby ID"
+        android:imeActionLabel="Send"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/editText"
-        android:layout_marginTop="16dp"
-        android:text="Send Value"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        android:background="@color/white"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
 </RelativeLayout>
-
-

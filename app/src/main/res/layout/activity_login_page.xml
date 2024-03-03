@@ -7,7 +7,7 @@
     tools:context=".Login_Page"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/login">
+    android:background="@color/bg1">
 
 
     <LinearLayout
@@ -27,7 +27,14 @@
             android:textColor="@color/white"
             android:textSize="50sp"
             android:textStyle="bold"
-            android:layout_marginBottom="100dp"/>
+            android:layout_marginBottom="40dp"/>
+
+        <ImageView
+            android:id="@+id/amazonImage"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginLeft="120dp"
+            android:src="@drawable/logo1" />
 
         <TextView
             android:layout_width="wrap_content"

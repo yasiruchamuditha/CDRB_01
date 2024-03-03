@@ -41,7 +41,7 @@ public class Triposha_Card extends AppCompatActivity {
         tableLayout = findViewById(R.id.table_layout);
 
         // Assuming receivedValue is the baby_id
-        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Vaccinations");
+        DatabaseReference babyReference = FirebaseDatabase.getInstance().getReference("Main").child(receivedValue).child("Triposha");
 
         babyReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,17 +52,17 @@ public class Triposha_Card extends AppCompatActivity {
                 addHeaders();
 
                 // Iterate through children to find vaccination details
-                for (DataSnapshot vaccinationSnapshot : dataSnapshot.getChildren()) {
-                    String babyId = (String) vaccinationSnapshot.child("Baby_id").getValue();
-                    String babyMonths = (String) vaccinationSnapshot.child("Baby_months").getValue();
-                    String babyName = (String) vaccinationSnapshot.child("Baby_name").getValue();
-                    String gender = (String) vaccinationSnapshot.child("Gender").getValue();
-                    String vaccinationDate = (String) vaccinationSnapshot.child("Vaccination_date").getValue();
-                    String vaccineName = (String) vaccinationSnapshot.child("Vaccine_name").getValue();
-                    String immediateHealth = (String) vaccinationSnapshot.child("immediateHealth").getValue();
+                for (DataSnapshot triposhaDataSnapShot : dataSnapshot.getChildren()) {
+                    String babyId = (String) triposhaDataSnapShot.child("Baby_id").getValue();
+                    String babyMonths = (String) triposhaDataSnapShot.child("Baby_months").getValue();
+                    String babyName = (String) triposhaDataSnapShot.child("Baby_name").getValue();
+                    String gender = (String) triposhaDataSnapShot.child("Gender").getValue();
+                    String packets = (String) triposhaDataSnapShot.child("Packets").getValue();
+                    String specialNote = (String) triposhaDataSnapShot.child("Special_note").getValue();
+                    String date = (String) triposhaDataSnapShot.child("Triposha_date").getValue();
 
                     // Add a row for each vaccination record
-                    addRow(babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth);
+                    addRow(babyId, babyMonths, babyName, gender, packets, specialNote, date);
                 }
             }
 
@@ -79,7 +79,7 @@ public class Triposha_Card extends AppCompatActivity {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] headers = {"Baby ID", "Baby Months", "Baby Name", "Gender", "Vaccination Date", "Vaccine Name", "Immediate Health"};
+        String[] headers = {"Baby ID", "Baby Months", "Baby Name", "Gender", "Packet Quantity", "Special Note", "Date"};
 
         for (String header : headers) {
             TextView textView = new TextView(this);
@@ -94,11 +94,11 @@ public class Triposha_Card extends AppCompatActivity {
     }
 
     // Helper method to add a row to the table
-    private void addRow(String babyId, String babyMonths, String babyName, String gender, String vaccinationDate, String vaccineName, String immediateHealth) {
+    private void addRow(String babyId, String babyMonths, String babyName, String gender, String packets, String specialNote, String date) {
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-        String[] data = {babyId, babyMonths, babyName, gender, vaccinationDate, vaccineName, immediateHealth};
+        String[] data = {babyId, babyMonths, babyName, gender, packets, specialNote, date};
 
         for (String datum : data) {
             TextView textView = new TextView(this);
