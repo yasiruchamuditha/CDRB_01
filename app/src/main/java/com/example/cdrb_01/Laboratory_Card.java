@@ -89,6 +89,7 @@ public class Laboratory_Card extends AppCompatActivity {
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(8, 8, 8, 8);
             textView.setTextSize(16);
+            textView.setTextColor(getResources().getColor(R.color.bg1)); // Set header text color here
             row.addView(textView);
         }
 
