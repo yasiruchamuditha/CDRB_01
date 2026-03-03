@@ -35,12 +35,6 @@ An Android mobile application for digitising and managing child health records. 
 
 ---
 
-## Screenshots
-
-> _Add screenshots of the app here (Splash Screen, Login, Home Dashboard, Vaccination Card, etc.)_
-
----
-
 ## Technology Stack
 
 | Category          | Technology                                      |
